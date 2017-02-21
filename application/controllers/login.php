@@ -13,7 +13,7 @@ class Login extends MY_Controller
 		
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('username','User Name ', 'required|trim|max_length[15]|alpha');
+		$this->form_validation->set_rules('username','User Name ', 'required|trim|max_length[25]|alpha');
 		$this->form_validation->set_rules('password','Password ', 'required');
 
 		if($this->form_validation->run()== FALSE)
@@ -21,7 +21,19 @@ class Login extends MY_Controller
 			$this->load->view('public/admin_login');
 		}else
 		{
-			echo 'No errors';
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+			// echo "Username is $username and Password is $password !";
+			$this->load->model('loginmodel');
+
+			if($this->loginmodel->login_valid($username, $password))
+			{
+				//crediention valid , login user
+				echo "you are login";
+			}else
+			{
+				// authentication failed !
+			}
 		}
 	}
 }

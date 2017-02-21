@@ -11,7 +11,7 @@
 					<div class="form-group">
 						<label for="inputEmail" class="col-lg-2 control-label">Email</label>
 						<div class="col-lg-10">
-							<?php echo form_input(['name'=>'username','class'=>'form-control','placeholder'=>'Username','value'=>'set_value("username")']); ?>
+							<?php echo form_input(['name'=>'username','class'=>'form-control','placeholder'=>'Username','value'=>set_value("username")]); ?>
 						</div>
 					</div>
 				</div>
@@ -24,7 +24,7 @@
 					<div class="form-group">
 						<label for="inputPassword" class="col-lg-2 control-label">Password</label>
 						<div class="col-lg-10">
-							<?php echo form_password(['name'=>'password','class'=>'form-control','placeholder'=>'Password']); ?>
+							<?php echo form_password(['value'=>set_value('password'),'name'=>'password','class'=>'form-control','placeholder'=>'Password']); ?>
 						</div>
 					</div>
 				</div>
