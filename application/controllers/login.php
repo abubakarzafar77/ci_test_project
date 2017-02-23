@@ -26,12 +26,22 @@ class Login extends MY_Controller
 			// echo "Username is $username and Password is $password !";
 			$this->load->model('loginmodel');
 
-			if($this->loginmodel->login_valid($username, $password))
+			$login_data = $this->loginmodel->login_valid($username, $password);
+			// this is array $login_data 
+			if($login_data)
 			{
 				//crediention valid , login user
-				echo "you are login";
+
+				$this->load->library('session');
+
+				// $newdata = array('user_id' => $login_data['user_id']);
+				$this->session->set_userdata($login_data);
+
+				$this->load->view('admin/dashboard');
+				// echo $_SESSION['user_id'];
 			}else
 			{
+				echo "Password dont matched";
 				// authentication failed !
 			}
 		}
