@@ -5,7 +5,17 @@
 		echo form_open('login/admin_login',$attributes);
 	?>
 		<fieldset>
-			<legend>Legend</legend>
+			<legend>Admin Login</legend>
+			<?php if($invalid_login = $this->session->userdata('invalid_login')):?>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="alert alert-dismissible alert-danger">
+							<button type="button" class="close" data-dismiss="alert">&times;</button>
+							<?= $invalid_login ;?>
+						</div>
+					</div>
+				</div>
+			<?php endif ;?>
 			<div class="row">
 				<div class="col-sm-6">
 					<div class="form-group">

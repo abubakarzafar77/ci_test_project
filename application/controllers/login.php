@@ -4,12 +4,18 @@ class Login extends MY_Controller
 {
 	public function index()
 	{
+		if($this->session->userdata('user_id'))
+			return redirect('admin/dashboard');
 		$this->load->helper('form');
 		$this->load->view('public/admin_login');
 	}
 
 	public function admin_login()
 	{
+		if($this->session->userdata('user_id'))
+			return redirect('admin/dashboard');
+
+		
 		
 		$this->load->library('form_validation');
 
@@ -32,18 +38,24 @@ class Login extends MY_Controller
 			{
 				//crediention valid , login user
 
-				$this->load->library('session');
+				// $this->load->library('session');
 
 				// $newdata = array('user_id' => $login_data['user_id']);
 				$this->session->set_userdata($login_data);
-
-				$this->load->view('admin/dashboard');
+				
+				// $this->load->view('admin/dashboard');
+				
+				redirect('admin/dashboard');
 				// echo $_SESSION['user_id'];
 			}else
 			{
+				$invlid_value = 'invalid <strong>Username</strong> and <strong>Password</strong>';
+				$this->session->set_flashdata('invalid_login',$invlid_value);
+				return redirect('login');
 				echo "Password dont matched";
 				// authentication failed !
 			}
 		}
 	}
+
 }

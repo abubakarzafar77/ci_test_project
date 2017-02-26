@@ -20,8 +20,7 @@ class Loginmodel extends CI_Model
 
 			return $login_data;
 		}else
-		{
-			
+		{	
 			return false;
 		}
 

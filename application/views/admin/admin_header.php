@@ -15,17 +15,11 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Articles </a>
+				<a class="navbar-brand" href="<?= base_url('admin/dashboard'); ?>">Admin Dashboard </a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-				<form class="navbar-form navbar-left" role="search">
-					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
-					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Login</a></li>
+					<li><a href="<?php echo base_url('logout');?>">Logout</a></li>
 				</ul>
 			</div>
 		</div>
