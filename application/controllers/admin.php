@@ -30,12 +30,27 @@ class Admin extends MY_Controller
 		$this->load->library('form_validation');
 		if($this->form_validation->run('add_article_rules') == FALSE)
 		{
-			echo 'roles are wrong';
-			exit();
 			return redirect('admin/add_article');
 		}else
 		{
-			echo "helloo";
+			$post = $this->input->post();
+			
+			$this->load->model('articlemodel','article');
+
+			if($this->article->add_article($post))
+			{
+				//record inserted 
+				$feedback = '<strong>your article has been inserted!</strong>';
+				$this->session->set_flashdata('feedback',$feedback);
+				$this->session->set_flashdata('feedback_class','alert-success');
+			}else
+			{
+				//insertion failed
+				$feedback = '<strong>your insertion failed!</strong>';
+				$this->session->set_flashdata('feedback',$feedback);
+				$this->session->set_flashdata('feedback_class','alert-danger');
+			}
+			return redirect('admin/dashboard');
 		}
 	}
 	public function delete_article()

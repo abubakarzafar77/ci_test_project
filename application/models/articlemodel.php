@@ -7,11 +7,16 @@ class Articlemodel extends CI_Model
 		$user_id = $this->session->userdata('user_id');
 
 		$sql = $this->db
-					->select('title')
+					->select('body,title')
 					->from('articles')
 					->where('user_id',$user_id)
 					->get();
 		return $sql->result();
 
+	}
+	public function add_article($array)
+	{
+		unset($array['submit']);
+		return $this->db->insert('articles',$array);
 	}
 }

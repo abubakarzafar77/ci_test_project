@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2017 at 09:15 PM
+-- Generation Time: Feb 26, 2017 at 10:08 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -33,6 +33,18 @@ CREATE TABLE `articles` (
   `body` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `articles`
+--
+
+INSERT INTO `articles` (`id`, `user_id`, `title`, `body`) VALUES
+(1, 1, 'this article title ', 'this is article body ... '),
+(2, 1, 'asdkalsdfj;', 'asdfasdf'),
+(3, 1, 'test title', 'test article body'),
+(4, 1, 'test title', 'test article body'),
+(5, 1, 'Test Article Title', 'Test Article body'),
+(6, 1, 'test title', 'sdsd');
+
 -- --------------------------------------------------------
 
 --
@@ -46,6 +58,13 @@ CREATE TABLE `users` (
   `fname` varchar(100) NOT NULL,
   `lname` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `fname`, `lname`) VALUES
+(1, 'abubakar', '123', 'abubakar', 'zafar');
 
 --
 -- Indexes for dumped tables
@@ -71,12 +90,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

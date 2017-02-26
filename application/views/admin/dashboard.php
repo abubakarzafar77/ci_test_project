@@ -11,6 +11,17 @@
 			<?= anchor('admin/add_article','Add Article' ,['class'=>'btn btn-lg pull-right btn-primary']);?>
 		</div>
 	</div>
+	<?php if($feedback = $this->session->userdata('feedback')):?>
+		<?php $feedback_class = $this->session->userdata('feedback_class');?>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="alert alert-dismissible <?= $feedback_class ;?>">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					<?= $feedback ;?>
+				</div>
+			</div>
+		</div>
+	<?php endif ;?>
 </div>
 <div class="container">
 	<table class="table">
@@ -18,6 +29,7 @@
 			<tr>
 				<th>Sr:No</th>			
 				<th>Title</th>			
+				<th>Body</th>			
 				<th>Action</th>			
 			</tr>
 		</thead>
@@ -27,6 +39,7 @@
 				<tr>
 					<td>1</td>
 					<td><?= $article->title; ?></td>
+					<td><?= $article->body; ?></td>
 					<td>
 						<a class="btn btn-primary">Edit</a>
 						<a class="btn btn-danger">Delete</a>
@@ -35,7 +48,7 @@
 				<?php endforeach; ?>
 			<?php else:?>
 				<tr>
-					<td>No result found !!</td>
+					<td colspan="4">No result found !!</td>
 				</tr>
 			<?php endif;?>
 		</tbody>
