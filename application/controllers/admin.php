@@ -21,9 +21,12 @@ class Admin extends MY_Controller
 		$this->load->helper('form');
 		$this->load->view('admin/add_article');
 	}
-	public function edit_article()
+	public function edit_article($article_id)
 	{
-		
+		$this->load->model('articlemodel','article');
+		$article_row = $this->article->find_article($article_id);	
+		echo "<pre>";
+		print_r($article_row);
 	}
 	public function store_article()
 	{

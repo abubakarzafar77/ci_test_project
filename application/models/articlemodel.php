@@ -7,7 +7,7 @@ class Articlemodel extends CI_Model
 		$user_id = $this->session->userdata('user_id');
 
 		$sql = $this->db
-					->select('body,title')
+					->select('body,title,id')
 					->from('articles')
 					->where('user_id',$user_id)
 					->get();
@@ -18,5 +18,12 @@ class Articlemodel extends CI_Model
 	{
 		unset($array['submit']);
 		return $this->db->insert('articles',$array);
+	}
+
+	public function find_article($article_id)
+	{
+		$q = $this->db->where('id',$article_id)
+				->get('articles');
+		return $q->row();
 	}
 }

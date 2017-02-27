@@ -41,7 +41,8 @@
 					<td><?= $article->title; ?></td>
 					<td><?= $article->body; ?></td>
 					<td>
-						<a class="btn btn-primary">Edit</a>
+						<!-- <a class="btn btn-primary">Edit</a> -->
+						<?= anchor("admin/edit_article/{$article->id}",'Edit',['class'=>'btn btn-primary']); ?>
 						<a class="btn btn-danger">Delete</a>
 					</td>
 				</tr>
