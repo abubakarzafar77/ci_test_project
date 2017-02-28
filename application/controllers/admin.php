@@ -23,11 +23,29 @@ class Admin extends MY_Controller
 	}
 	public function edit_article($article_id)
 	{
+		$this->load->helper('form');
 		$this->load->model('articlemodel','article');
-		$article_row = $this->article->find_article($article_id);	
-		echo "<pre>";
-		print_r($article_row);
+		$data['article_row'] = $this->article->find_article($article_id);	
+		$this->load->view('admin/edit_article',$data);
 	}
+
+
+	public function update_article()
+	{
+		$post = $this->input->post();
+		$this->load->model('articlemodel','article');
+		unset($post['submit']);
+		$update_check = $this->article->update_article($post['id'],$post);
+		if($update_check)
+		{
+			echo "record updated!";
+		}else
+		{
+			echo "failed ";
+		}
+	}
+
+
 	public function store_article()
 	{
 		$this->load->library('form_validation');

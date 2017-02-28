@@ -26,4 +26,8 @@ class Articlemodel extends CI_Model
 				->get('articles');
 		return $q->row();
 	}
+	public function update_article($article_id , $post)
+	{
+		return $this->db->update('articles',$post, ['id'=>$article_id]);
+	}
 }
