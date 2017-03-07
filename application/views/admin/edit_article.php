@@ -3,8 +3,8 @@
 <div class="container">
 	<?php 
 	$form_attributes = array('class'=>'form-horizontal','id'=> 'add_form');
-	echo form_open('admin/update_article', $form_attributes); 
-	echo form_hidden('id', $article_row->id);
+	echo form_open("admin/update_article/{$article_row->id}", $form_attributes); 
+	// echo form_hidden('id', $article_row->id);
 	?>
 	<fieldset>
 		<legend>Edit Article</legend>
@@ -44,7 +44,7 @@
 				<div class="form-group">
 					<div class="col-md-8 col-md-offset-4">
 						<?php echo form_reset(['name'=>'reset','class'=>'btn btn-default','value'=>'Reset']); ?>
-						<?php echo form_submit(['name'=>'submit','class'=>'btn btn-primary','value'=>'Edit Article']); ?>
+						<?php echo form_submit(['name'=>'submit','class'=>'btn btn-primary','value'=>'Update Article']); ?>
 					</div>
 				</div>
 			</div>

@@ -30,19 +30,43 @@ class Admin extends MY_Controller
 	}
 
 
-	public function update_article()
+	public function update_article($article_id)
 	{
-		$post = $this->input->post();
-		$this->load->model('articlemodel','article');
-		unset($post['submit']);
-		$update_check = $this->article->update_article($post['id'],$post);
-		if($update_check)
+		$this->load->library('form_validation');
+		if($this->form_validation->run('add_article_rules') == FALSE)
 		{
-			echo "record updated!";
+			return redirect('admin/edit_article');
 		}else
 		{
-			echo "failed ";
+			$post = $this->input->post();			
+			$this->load->model('articlemodel','article');
+			unset($post['submit']);
+			if($this->article->update_article($article_id,$post))
+			{
+				//record inserted 
+				$feedback = '<strong>your article has been updated!</strong>';
+				$this->session->set_flashdata('feedback',$feedback);
+				$this->session->set_flashdata('feedback_class','alert-success');
+			}else
+			{
+				//insertion failed
+				$feedback = '<strong>your updation failed!</strong>';
+				$this->session->set_flashdata('feedback',$feedback);
+				$this->session->set_flashdata('feedback_class','alert-danger');
+			}
+			return redirect('admin/dashboard');
 		}
+		// $post = $this->input->post();
+		// $this->load->model('articlemodel','article');
+		// unset($post['submit']);
+		// $update_check = $this->article->update_article($post['id'],$post);
+		// if($update_check)
+		// {
+		// 	echo "record updated!";
+		// }else
+		// {
+		// 	echo "failed ";
+		// }
 	}
 
 
