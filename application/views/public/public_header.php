@@ -18,14 +18,15 @@
 				<a class="navbar-brand" href="#">Articles </a>
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-				<form class="navbar-form navbar-left" role="search">
+				<?= form_open('user/search', ['class'=>'navbar-form navbar-left','role'=>'search']);?>
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Search">
+						<input type="text" name="query" class="form-control" placeholder="Search">
 					</div>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
+					<button type="submit" class="btn btn-default">Search</button>
+				<?= form_close();?>
+				<?= form_error('query','<p class="navbar-text">','</p>');?>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Login</a></li>
+					<li><?= anchor('login', 'Login');?></li>
 				</ul>
 			</div>
 		</div>

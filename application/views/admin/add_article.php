@@ -3,8 +3,9 @@
 <div class="container">
 	<?php 
 	$form_attributes = array('class'=>'form-horizontal','id'=> 'add_form');
-	echo form_open('admin/store_article', $form_attributes); 
+	echo form_open_multipart('admin/store_article', $form_attributes); 
 	echo form_hidden('user_id', $this->session->userdata('user_id'));
+	echo form_hidden('created_at', date('Y-m-d H:i:s'));
 	?>
 	<fieldset>
 		<legend>Add Article</legend>
@@ -32,6 +33,19 @@
 			</div>
 			<div class="col-md-6">
 				<?php echo form_error('body','<span class="text-danger">','</span>');?>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label for="body" class="control-label col-md-4">Upload Image</label>
+					<div class="col-md-8">
+						<?php echo form_upload(['name'=>'file']) ?>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<?php if(isset($upload_error)){echo $upload_error;}?>
 			</div>
 		</div>
 		<div class="row">

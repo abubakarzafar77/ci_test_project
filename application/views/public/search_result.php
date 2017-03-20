@@ -6,18 +6,17 @@
 			<tr>
 				<th>Sr. No:</th>
 				<th>Title</th>
-				<th>Published on</th>
+				<th>Date</th>
 			</tr>
 		</thead>
 		<tbody>
 			<?php if(count($articles)):?>
-				<?php $count = $this->uri->segment(3,0);?>
+				<?php $count = $this->uri->segment(4,0);?>
 				<?php foreach($articles as $article):?>
 					<tr>
 						<td> <?= ++$count;?></td>
-						<td> <?= anchor("user/article/$article->id", $article->title);?></td>
-						<!-- <td> <?= $article->title;?></td> -->
-						<td> <?= date('d M y H:i:s', strtotime($article->created_at));?></td>
+						<td> <?= $article->title;?></td>
+						<td> <?= 'Date';?></td>
 					</tr>
 				<?php endforeach; ?>
 			<?php else:?>
@@ -28,7 +27,6 @@
 			<?php ?>
 		</tbody>
 	</table>
-
-	<?= $this->pagination->create_links();?>
+	<?php echo $this->pagination->create_links(); ?>
 </div>
 <?php include('public_footer.php'); ?>
